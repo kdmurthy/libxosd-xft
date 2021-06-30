@@ -81,7 +81,9 @@ get_monitors(Display *display, int *n, int use_xrandr, int use_xinerama)
   FUNCTION_START();
   struct monitor* r = NULL;
   *n = 0;
-  char* used = NULL;
+#ifdef DEBUG
+  char* used ;
+#endif
 #ifdef HAVE_LIBXRANDR
   if(use_xrandr) {
     XRRMonitorInfo *monitors = XRRGetMonitors(display, DefaultRootWindow(display), True, n);
@@ -99,7 +101,9 @@ get_monitors(Display *display, int *n, int use_xrandr, int use_xinerama)
 #ifdef HAVE_LIBXINERAMA
       use_xinerama = 0;
 #endif
+#ifdef DEBUG
       used = "Xrandr";
+#endif
     }
   }
 #endif
@@ -122,7 +126,9 @@ get_monitors(Display *display, int *n, int use_xrandr, int use_xinerama)
     }
     if (screeninfo)
       XFree(screeninfo);
+#ifdef DEBUG
     used = "Xinerama" ;
+#endif
   }
 #endif
   if(r == NULL) {
