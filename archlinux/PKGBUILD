@@ -1,7 +1,7 @@
 # Maintainer: Dakshinamurthy Karra (dakshinamurthy.karra@jaliansystems.com)
 
 pkgname=libxosd-xft
-pkgver=1.0.0
+pkgver=1.0.r0.geb900d5
 pkgrel=1
 pkgdesc="OSD for X11"
 arch=(x86_64)
@@ -13,15 +13,24 @@ optdepends=('libxrandr: Xrandr multihead support'
             'libxinerama: Xinerama multihead support')
 provides=('xosd-xft')
 conflicts=('xosd-xft')
-source=(https://github.com/kdmurthy/libxosd-xft/archive/refs/tags/v${pkgver}.tar.gz)
+source=("$pkgname::git://github.com/kdmurthy/libxosd-xft.git")
+md5sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make DESTDIR="$pkgdir/" install
+}
+
+pkgver() {
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
