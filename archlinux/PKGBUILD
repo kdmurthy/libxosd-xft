@@ -1,0 +1,27 @@
+# Maintainer: Dakshinamurthy Karra (dakshinamurthy.karra@jaliansystems.com)
+
+pkgname=libxosd-xft
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="OSD for X11"
+arch=(x86_64)
+url="https://github.com/kdmurthy/libxosd-xft"
+license=('GPL' 'LGPL')
+depends=('libx11' 'libxft' 'libxext')
+makedepends=('xorg-util-macros')
+optdepends=('libxrandr: Xrandr multihead support'
+            'libxinerama: Xinerama multihead support')
+provides=('xosd-xft')
+conflicts=('xosd-xft')
+source=(https://github.com/kdmurthy/libxosd-xft/archive/refs/tags/v${pkgver}.tar.gz)
+
+build() {
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}
