@@ -287,6 +287,11 @@ void calc_geometry(xosd_xft *osd, osd_geometry *geometry)
   osd->t_width = width - osd->w_pad_l - osd->w_pad_r;
   osd->t_height = height - osd->w_pad_t - osd->w_pad_b;
 
+  if(osd->settings.maxlines > osd->t_height / line_height) {
+    int maxlines = osd->t_height / line_height ;
+    fprintf(stderr, "Number of lines > displayable lines. Adjusting to %d", maxlines);
+    osd->settings.maxlines = maxlines ;
+  }
   osd->w_width = width;
   osd->w_height = height;
   osd->line_height = line_height;
