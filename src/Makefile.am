@@ -1,17 +1,17 @@
 noinst_PROGRAMS 	= osd-example
-bin_PROGRAMS 	= osd-demo osd-show-file osd-show-key
+bin_PROGRAMS 	= osd-demo osd-cat osd-echo
 
 osd_demo_SOURCES  = osd-demo.c
 
 osd_demo_LDADD 	= libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
 
-osd_show_file_SOURCES  = osd-show-file.c
+osd_cat_SOURCES  = osd-cat.c
 
-osd_show_file_LDADD 	= libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
+osd_cat_LDADD 	= libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
 
-osd_show_key_SOURCES  = osd-show-key.c utf8.c nerdfonts.c
+osd_echo_SOURCES  = osd-echo.c utf8.c nerdfonts.c
 
-osd_show_key_LDADD 	= libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
+osd_echo_LDADD 	= libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
 
 osd_example_SOURCES  = osd-example.c
 

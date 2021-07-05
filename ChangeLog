@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.1] - 2021-07-21
+## [1.1.0] - 2021-07-05
+
+Changed the command names to osd-cat and osd-echo
+
+## [1.0.1] - 2021-06-21
 
 Added PKGBUILD to build from github repository.
 
-## [1.0.0] - 2021-07-21
+## [1.0.0] - 2021-06-21
 
 Initial public release
 

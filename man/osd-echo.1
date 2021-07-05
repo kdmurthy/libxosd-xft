@@ -4,29 +4,29 @@
 .hy
 .SH NAME
 .PP
-osd-show-key, osd-show-file, osd-demo - Show information in a OSD window
+osd-echo, osd-cat, osd-demo - Show information in a OSD window
 .SH SYNOPSIS
 .PP
-osd-show-key [\f[I]options\f[R]] \f[I]message\f[R]
+osd-echo [\f[I]options\f[R]] \f[I]message\f[R]
 .PP
-osd-show-file [\f[I]options\f[R]] [\f[I]file\f[R]]
+osd-cat [\f[I]options\f[R]] [\f[I]file\f[R]]
 .PP
 osd\[en]demo [\f[I]options\f[R]]
 .SH DESCRIPTION
 .PP
-\f[C]osd-show-key\f[R] shows a message in a translucent window on the
+\f[C]osd-echo\f[R] shows a message in a translucent window on the
 screen.
-\f[C]osd-show-key\f[R] can understand unicode escape sequences in the
+\f[C]osd-echo\f[R] can understand unicode escape sequences in the
 message and can also understand glyph names from Nerd fonts.
 .PP
-\f[C]osd-show-file\f[R] shows a given file in a OSD window.
-If a file is not given \f[C]osd-show-file\f[R] reads from the standard
+\f[C]osd-cat\f[R] shows a given file in a OSD window.
+If a file is not given \f[C]osd-cat\f[R] reads from the standard
 input.
 .PP
 \f[C]osd-demo\f[R] is a small program that shows the capabilities of
 \f[C]xosd-xft\f[R] library.
 .PP
-Both \f[C]osd-show-key\f[R] and \f[C]osd-show-file\f[R] provides various
+Both \f[C]osd-echo\f[R] and \f[C]osd-cat\f[R] provides various
 options to control the colors, font and geometry used to display the
 information.
 .SH OPTIONS
@@ -116,13 +116,13 @@ Monitor to display message
 \f[R]
 .fi
 .PP
-Besides the above options \f[C]osd-show-file\f[R] accepts the following
+Besides the above options \f[C]osd-cat\f[R] accepts the following
 options:
 .TP
 -n \f[I]NUMBER\f[R], --number-of-lines=\f[I]NUMBER\f[R]
 Number of lines to display
 .PP
-The \f[C]osd-show-key\f[R] command accepts the following additional
+The \f[C]osd-echo\f[R] command accepts the following additional
 options:
 .TP
 -e \f[I]COMMAND\f[R], --exec=\f[I]COMMAND\f[R]
@@ -137,7 +137,7 @@ To display \f[C]/etc/passwd\f[R]:
 .IP
 .nf
 \f[C]
-    osd-show-file /etc/passwd
+    osd-cat /etc/passwd
 \f[R]
 .fi
 .SH AUTHORS

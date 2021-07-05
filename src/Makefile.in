@@ -90,8 +90,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 noinst_PROGRAMS = osd-example$(EXEEXT)
-bin_PROGRAMS = osd-demo$(EXEEXT) osd-show-file$(EXEEXT) \
-	osd-show-key$(EXEEXT)
+bin_PROGRAMS = osd-demo$(EXEEXT) osd-cat$(EXEEXT) osd-echo$(EXEEXT)
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
@@ -107,23 +106,23 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(includedir)"
 PROGRAMS = $(bin_PROGRAMS) $(noinst_PROGRAMS)
-am_osd_demo_OBJECTS = osd-demo.$(OBJEXT)
-osd_demo_OBJECTS = $(am_osd_demo_OBJECTS)
-osd_demo_DEPENDENCIES = libxosd-xft/libxosd-xft.la
+am_osd_cat_OBJECTS = osd-cat.$(OBJEXT)
+osd_cat_OBJECTS = $(am_osd_cat_OBJECTS)
+osd_cat_DEPENDENCIES = libxosd-xft/libxosd-xft.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_osd_demo_OBJECTS = osd-demo.$(OBJEXT)
+osd_demo_OBJECTS = $(am_osd_demo_OBJECTS)
+osd_demo_DEPENDENCIES = libxosd-xft/libxosd-xft.la
+am_osd_echo_OBJECTS = osd-echo.$(OBJEXT) utf8.$(OBJEXT) \
+	nerdfonts.$(OBJEXT)
+osd_echo_OBJECTS = $(am_osd_echo_OBJECTS)
+osd_echo_DEPENDENCIES = libxosd-xft/libxosd-xft.la
 am_osd_example_OBJECTS = osd-example.$(OBJEXT)
 osd_example_OBJECTS = $(am_osd_example_OBJECTS)
 osd_example_DEPENDENCIES = libxosd-xft/libxosd-xft.la
-am_osd_show_file_OBJECTS = osd-show-file.$(OBJEXT)
-osd_show_file_OBJECTS = $(am_osd_show_file_OBJECTS)
-osd_show_file_DEPENDENCIES = libxosd-xft/libxosd-xft.la
-am_osd_show_key_OBJECTS = osd-show-key.$(OBJEXT) utf8.$(OBJEXT) \
-	nerdfonts.$(OBJEXT)
-osd_show_key_OBJECTS = $(am_osd_show_key_OBJECTS)
-osd_show_key_DEPENDENCIES = libxosd-xft/libxosd-xft.la
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -139,9 +138,9 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/nerdfonts.Po ./$(DEPDIR)/osd-demo.Po \
-	./$(DEPDIR)/osd-example.Po ./$(DEPDIR)/osd-show-file.Po \
-	./$(DEPDIR)/osd-show-key.Po ./$(DEPDIR)/utf8.Po
+am__depfiles_remade = ./$(DEPDIR)/nerdfonts.Po ./$(DEPDIR)/osd-cat.Po \
+	./$(DEPDIR)/osd-demo.Po ./$(DEPDIR)/osd-echo.Po \
+	./$(DEPDIR)/osd-example.Po ./$(DEPDIR)/utf8.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -161,10 +160,10 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(osd_demo_SOURCES) $(osd_example_SOURCES) \
-	$(osd_show_file_SOURCES) $(osd_show_key_SOURCES)
-DIST_SOURCES = $(osd_demo_SOURCES) $(osd_example_SOURCES) \
-	$(osd_show_file_SOURCES) $(osd_show_key_SOURCES)
+SOURCES = $(osd_cat_SOURCES) $(osd_demo_SOURCES) $(osd_echo_SOURCES) \
+	$(osd_example_SOURCES)
+DIST_SOURCES = $(osd_cat_SOURCES) $(osd_demo_SOURCES) \
+	$(osd_echo_SOURCES) $(osd_example_SOURCES)
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -398,10 +397,10 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 osd_demo_SOURCES = osd-demo.c
 osd_demo_LDADD = libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
-osd_show_file_SOURCES = osd-show-file.c
-osd_show_file_LDADD = libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
-osd_show_key_SOURCES = osd-show-key.c utf8.c nerdfonts.c
-osd_show_key_LDADD = libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
+osd_cat_SOURCES = osd-cat.c
+osd_cat_LDADD = libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
+osd_echo_SOURCES = osd-echo.c utf8.c nerdfonts.c
+osd_echo_LDADD = libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
 osd_example_SOURCES = osd-example.c
 osd_example_LDADD = libxosd-xft/libxosd-xft.la @XFT_LIBS@ @X11_LIBS@ @XRENDER_LIBS@
 include_HEADERS = xosd-xft.h
@@ -499,21 +498,21 @@ clean-noinstPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+osd-cat$(EXEEXT): $(osd_cat_OBJECTS) $(osd_cat_DEPENDENCIES) $(EXTRA_osd_cat_DEPENDENCIES) 
+	@rm -f osd-cat$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(osd_cat_OBJECTS) $(osd_cat_LDADD) $(LIBS)
+
 osd-demo$(EXEEXT): $(osd_demo_OBJECTS) $(osd_demo_DEPENDENCIES) $(EXTRA_osd_demo_DEPENDENCIES) 
 	@rm -f osd-demo$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(osd_demo_OBJECTS) $(osd_demo_LDADD) $(LIBS)
 
+osd-echo$(EXEEXT): $(osd_echo_OBJECTS) $(osd_echo_DEPENDENCIES) $(EXTRA_osd_echo_DEPENDENCIES) 
+	@rm -f osd-echo$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(osd_echo_OBJECTS) $(osd_echo_LDADD) $(LIBS)
+
 osd-example$(EXEEXT): $(osd_example_OBJECTS) $(osd_example_DEPENDENCIES) $(EXTRA_osd_example_DEPENDENCIES) 
 	@rm -f osd-example$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(osd_example_OBJECTS) $(osd_example_LDADD) $(LIBS)
-
-osd-show-file$(EXEEXT): $(osd_show_file_OBJECTS) $(osd_show_file_DEPENDENCIES) $(EXTRA_osd_show_file_DEPENDENCIES) 
-	@rm -f osd-show-file$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(osd_show_file_OBJECTS) $(osd_show_file_LDADD) $(LIBS)
-
-osd-show-key$(EXEEXT): $(osd_show_key_OBJECTS) $(osd_show_key_DEPENDENCIES) $(EXTRA_osd_show_key_DEPENDENCIES) 
-	@rm -f osd-show-key$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(osd_show_key_OBJECTS) $(osd_show_key_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -522,10 +521,10 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nerdfonts.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osd-cat.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osd-demo.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osd-echo.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osd-example.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osd-show-file.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/osd-show-key.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/utf8.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -784,10 +783,10 @@ clean-am: clean-binPROGRAMS clean-generic clean-libtool \
 
 distclean: distclean-recursive
 		-rm -f ./$(DEPDIR)/nerdfonts.Po
+	-rm -f ./$(DEPDIR)/osd-cat.Po
 	-rm -f ./$(DEPDIR)/osd-demo.Po
+	-rm -f ./$(DEPDIR)/osd-echo.Po
 	-rm -f ./$(DEPDIR)/osd-example.Po
-	-rm -f ./$(DEPDIR)/osd-show-file.Po
-	-rm -f ./$(DEPDIR)/osd-show-key.Po
 	-rm -f ./$(DEPDIR)/utf8.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
@@ -835,10 +834,10 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-recursive
 		-rm -f ./$(DEPDIR)/nerdfonts.Po
+	-rm -f ./$(DEPDIR)/osd-cat.Po
 	-rm -f ./$(DEPDIR)/osd-demo.Po
+	-rm -f ./$(DEPDIR)/osd-echo.Po
 	-rm -f ./$(DEPDIR)/osd-example.Po
-	-rm -f ./$(DEPDIR)/osd-show-file.Po
-	-rm -f ./$(DEPDIR)/osd-show-key.Po
 	-rm -f ./$(DEPDIR)/utf8.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic

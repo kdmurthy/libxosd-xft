@@ -7,8 +7,8 @@ Inspired by [libxosd](https://sourceforge.net/projects/libxosd/).
 * Use Xft/TTF fonts
 * Xrandr and Xinerama extensions
 * Allows you to choose a monitor in multihead setups - including active monitor
-* Use `osd-show-key` to display a [Nerd Font](https://nerdfonts.com) glyph
-* Use `osd-show-file` to display a file
+* Use `osd-echo` to display a [Nerd Font](https://nerdfonts.com) glyph
+* Use `osd-cat` to display a file
 
 # Installation
 
@@ -20,31 +20,31 @@ sudo make install
 
 # Quick Look
 
-## Using osd-show-key
+## Using osd-echo
 
 To display volume off glyph and execute `amixer` command:
 
 ```bash
-    osd-show-key -e 'amixer set Master off' :fa-volume_off:")
+    osd-echo -e 'amixer set Master off' :fa-volume_off:")
 ```
 
 To list available glyph names that contain `volume` in them:
 
 ```
-    osd-show-key -lvolume
+    osd-echo -lvolume
 ```
 
 ## Using osd-showfile
 
 To override the font used to display a file:
 ```bash
-    osd-show-file -f "SourceCodePro:size=14" /etc/passwd
+    osd-cat -f "SourceCodePro:size=14" /etc/passwd
 ```
 
 The following command shows the output of uptime on the screen and updates every 5 seconds:
 
 ```bash
-while true; do uptime; sleep 5; done | osd-show-file --number-of-lines 1 -g 0x1l+0-0
+while true; do uptime; sleep 5; done | osd-cat --number-of-lines 1 -g 0x1l+0-0
 ```
 
 ## Using the library

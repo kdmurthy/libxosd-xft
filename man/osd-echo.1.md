@@ -4,29 +4,29 @@
 
 # NAME
 
-osd-show-key, osd-show-file, osd-demo - Show information in a OSD window
+osd-echo, osd-cat, osd-demo - Show information in a OSD window
 
 # SYNOPSIS
 
-osd-show-key [*options*] *message*
+osd-echo [*options*] *message*
 
-osd-show-file [*options*] [*file*]
+osd-cat [*options*] [*file*]
 
 osd--demo [*options*]
 
 # DESCRIPTION
 
-`osd-show-key` shows a message in a translucent window on the screen.
-`osd-show-key` can understand unicode escape sequences in the message and
+`osd-echo` shows a message in a translucent window on the screen.
+`osd-echo` can understand unicode escape sequences in the message and
 can also understand glyph names from Nerd fonts.
 
-`osd-show-file` shows a given file in a OSD window. If a file is not given
-`osd-show-file` reads from the standard input.
+`osd-cat` shows a given file in a OSD window. If a file is not given
+`osd-cat` reads from the standard input.
 
 `osd-demo` is a small program that shows the capabilities of `xosd-xft`
 library.
 
-Both `osd-show-key` and `osd-show-file` provides various options to control
+Both `osd-echo` and `osd-cat` provides various options to control
 the colors, font and geometry used to display the information.
 
 # OPTIONS
@@ -101,12 +101,12 @@ the colors, font and geometry used to display the information.
     monitors.
 ```
 
-Besides the above options `osd-show-file` accepts the following options:
+Besides the above options `osd-cat` accepts the following options:
 
 -n *NUMBER*, \--number-of-lines=*NUMBER*
 :   Number of lines to display
 
-The `osd-show-key` command accepts the following additional options:
+The `osd-echo` command accepts the following additional options:
 
 -e *COMMAND*, \--exec=*COMMAND*
 :   Executes the command using system(3) before displaying the window
@@ -119,25 +119,25 @@ The `osd-show-key` command accepts the following additional options:
 
 To display `/etc/passwd`:
 ```
-    osd-show-file /etc/passwd
+    osd-cat /etc/passwd
 ```
 
 To override the font used to display a file:
 ```
-    osd-show-file -f "SourceCodePro:size=14" /etc/passwd
+    osd-cat -f "SourceCodePro:size=14" /etc/passwd
 ```
 
 To override the geometry - using 120 characters width and 30 lines height:
 ```
-    osd-show-file -g 120cx30l /etc/passwd
+    osd-cat -g 120cx30l /etc/passwd
 ```
 
 To display volume off glyph and execute `amixer` command:
 ```
-    osd-show-key -e 'amixer set Master toggle' :fa-volume_off:")
+    osd-echo -e 'amixer set Master toggle' :fa-volume_off:")
 ```
 
 To list available glyph names that contain `volume` in them:
 ```
-    osd-show-key -lvolume
+    osd-echo -lvolume
 ```
