@@ -23,9 +23,9 @@ src/osd-demo
 src/osd-demo.o
 src/osd-example
 src/osd-example.o
-src/osd-show-file
-src/osd-show-file.o
-src/osd-show-key
-src/osd-show-key.o
+src/osd-cat
+src/osd-cat.o
+src/osd-echo
+src/osd-echo.o
 src/utf8.o
 xosd-xft.pc
