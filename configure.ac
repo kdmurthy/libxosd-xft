@@ -3,7 +3,7 @@ dnl Configure.ac for xosd_xft
 dnl
 
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(libxosd-xft, 1.0.1)
+AC_INIT(libxosd-xft, 1.1.0)
 AM_INIT_AUTOMAKE([no-define])
 
 dnl
