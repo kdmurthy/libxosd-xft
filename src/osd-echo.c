@@ -27,6 +27,7 @@ Copyright 2021 Dakshinamurthy Karra (dakshinamurthy.karra@jaliansystems.com)
 #include <locale.h>
 #include <X11/Xlib.h>
 #include <sys/time.h>
+#include <signal.h>
 
 #ifdef HAVE_LIBXINERAMA
 int use_xinerama = True;
@@ -256,7 +257,13 @@ int main(int argc, char *argv[])
   char *message = print_utf8(message1);
   osd_display(osd, message, strlen(message));
 
-  usleep(delay_millis * 1000);
+  if(delay_millis <= 0) {
+    sigset_t myset;
+    sigemptyset(&myset);
+    sigsuspend(&myset);
+  } else {
+    usleep(delay_millis * 1000);
+  }
   osd_destroy(osd);
   free(message);
   free(message1);
